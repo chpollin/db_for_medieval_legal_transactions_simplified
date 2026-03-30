@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Register subset for workshop (extracted from orgList.xml)</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Workshop subset</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Derived from full register</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <listOrg><org type="Herzogtum" xml:id="org__oesterreich-herzogtum" resp="kg">
+               <orgName>
+                  <reg>Herzogtum Österreich</reg>
+               </orgName>
+            </org>
+            <org type="Dioezese_Erzdioezese" xml:id="org__gurk-dioezese" resp="hk">
+               <orgName>
+                  <reg>Bistum Gurk</reg>
+               </orgName>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__gurk"/>
+                  </address>
+               </location>
+            </org>
+            <org type="Kloster_f" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen" resp="kg">
+               <trait>
+                  <label>Observance</label>
+                  <desc>OCist</desc>
+               </trait>
+               <orgName>
+                  <reg source="QGW_II_I_register_pg_558">St. Niklas (vor dem Stubentor) Wien</reg>
+               </orgName>
+               <idno type="URI">https://www.geschichtewiki.gv.at/Nikolaikloster_(3)</idno>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__wien-st_niklas_vor_dem_stubentor"/>
+                  </address>
+               </location>
+               <org type="Altar" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-altar_st_niklas" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_II_register_pg_558">St. Niklasaltar</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-messe_peter_chorherr_von_st_stephan" resp="rs">
+                  <orgName>
+                     <reg>Messstiftung von Peter, Chorherrn zu St. Stephan in Wien und Pfarrer von
+                        Würnitz</reg>
+                     <orig>mess die weilent her Peter korherr zu Sand Steffan pharrer zu Wurnitz in
+                        Sand Niclas kloster vor Stubentor gestifft hat</orig>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-jahrtag_ulrich_und_katharina_von_radendorf" resp="rs">
+                  <orgName>
+                     <reg>Jahrtag Ulrich und Katharina von Radendorf</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-messe_swentenbein_dietrich" resp="rs">
+                  <orgName>
+                     <reg>Messe Dietrich Swentenbein</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-messe_haiml_niklas_StB_I_370" resp="rs">
+                  <orgName>
+                     <reg>Messe Niklas Haiml</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen-messe_haimlin_katharina_QGW_II_I_1622" resp="rs">
+                  <!-- Dieser Eintrag ist zu löschen und der Tag in QGW_II_I_1622 zu korrigieren, denn die Messstiftung erfolgte laut StB_I_463 eindeutig an die Kapelle St. Niklas vor dem Stubentor, nicht an das Zisterzienserinnenkloster! (vgl. org__wien-st_niklas_vor_stubentor_kapelle-messe_katharina__StB_I_370)  -->
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_558">Messe Katharina Haimlin</reg>
+                  </orgName>
+               </org>
+            </org>
+            <org type="Kirche_Kapelle" xml:id="org__wien-st_maria_im_rathaus" resp="kg">
+               <orgName>
+                  <reg source="QGW_II_I_register_pg_550">St. Mariakapelle im Rathaus</reg>
+               </orgName>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__wiltwerkerstrasse"/>
+                     <addrLine corresp="#pl__st_maria_im_rathaus"/>
+                  </address>
+               </location>
+               <org type="Altar" xml:id="org__wien-st_maria_im_rathaus-altar_st_leonhard" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">St. Leonhardsaltar</reg>
+                  </orgName>
+               </org>
+               <org type="Altar" xml:id="org__wien-st_maria_im_rathaus-altar_jodocus" resp="lp">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">St. Jodocusaltar</reg>
+                  </orgName>
+                  <!-- Jodocus und Leonhard Altar sind dieselben, außerdem ist bei einem ein "st_" davor, beim anderen nicht -->
+               </org>
+               <org type="Altar" xml:id="org__wien-st_maria_im_rathaus-altar_allerheiligen" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Allerheiligenaltar</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_bettziehen" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Bettziehenmesse und ewiges Licht</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_reicholf" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Reicholfsche Messstiftung</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_johann_nagel" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Messe Johann Nagel</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_heinrich_haller_von_nuernberg" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Messe Heinrich Haller von Nürnberg</reg>
+                  </orgName>
+                  <!-- falsch siehe Uhlirz -->
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_stephan_poll" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Messe Stephan Poll</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Messe Friedrich von Ragelsdorf</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_niklas_poll" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Messe Niklas Poll</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_im_rathaus-messe_gevattern" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_550">Gevatternmesse</reg>
+                  </orgName>
+               </org>
+            </org>
+            <org type="Kloster_f" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor" resp="kg">
+               <trait>
+                  <label>Observance</label>
+                  <desc>OSMM</desc>
+               </trait>
+               <orgName>
+                  <reg source="QGW_II_I_register_pg_551">St. Maria Magdalena
+                     (Augustinernonnenkloster vor dem Schottentor) Wien</reg>
+               </orgName>
+               <idno type="URI">https://www.geschichtewiki.Wien
+                  (W).gv.at/Maria-Magdalena-Kloster</idno>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__wien-st_maria_magdalena_vor_schottentor"/>
+                  </address>
+               </location>
+               <org type="Altar" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_johannis_baptist">
+                  <orgName>
+                     <reg source="QGW_II_I_reigster_pg_551">St. Johannes bapt. et evang</reg>
+                  </orgName>
+               </org>
+               <org type="Altar" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_martha">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_551">St. Marthenaltar</reg>
+                  </orgName>
+                  <org type="Messe" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_martha-messe_pogenstainer" resp="kg">
+                     <orgName>
+                        <reg source="QGW_II_II_register_pg_485">Pogenstainermesse</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="Altar" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_maria">
+                  <orgName>
+                     <reg source="QGW_II_I_register_pg_551">Frauenaltar</reg>
+                  </orgName>
+                  <org type="Messe" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_maria-messe_slinger_kaspar" resp="kg">
+                     <orgName>
+                        <reg source="QGW_II_II_register_pg_485">Kaspar Slinger Messe</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="Messe" xml:id="org__wien-st_maria_magdalena_vor_dem_schottentor-messe_heinrich_von_st_poelten" resp="kg">
+                  <orgName>
+                     <reg source="QGW_II_II_register_pg_551">Messe Heinrich von St. Poelten</reg>
+                  </orgName>
+               </org>
+            </org>
+            <org type="Kloster_m" xml:id="org__wien-schotten" resp="kg">
+               <trait>
+                  <label>Observance</label>
+                  <desc>OSB</desc>
+               </trait>
+               <orgName>
+                  <reg source="QGW_II_I_register_pg_570">Schottenkloster Wien</reg>
+               </orgName>
+               <idno type="URI">https://www.geschichtewiki.gv.at/Schottenstift</idno>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__wien"/>
+                  </address>
+               </location>
+               <org type="OTHER" xml:id="org__wien-schotten-schule" resp="rs">
+                  <orgName>
+                     <reg>Schule des Wiener Schottenstifts</reg>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-schotten-messe_ernst_johann" resp="kg">
+                  <orgName>
+                     <orig>Jahrtag Johann Ernst, kamrer in der Canzley</orig>
+                  </orgName>
+               </org>
+               <org type="Messe" xml:id="org__wien-schotten-messe_konrad_StB_I_452" resp="kg">
+                  <orgName>
+                     <orig>Messe für Meister Konrad bei den Schotten</orig>
+                  </orgName>
+               </org>
+            </org>
+            <org type="Stadt" xml:id="org__wien" resp="kg">
+               <orgName>
+                  <reg>Wien</reg>
+               </orgName>
+               <note>Bürgermeister, Rat (und Gemein)</note>
+               <location>
+                  <address>
+                     <addrLine corresp="#pl__wien"/>
+                  </address>
+               </location>
+               <org type="Stadtviertel" xml:id="org__wien-stubarum">
+                  <orgName>
+                     <reg xml:lang="LAT">Stubarum</reg>
+                     <reg xml:lang="GER">Stubenviertel</reg>
+                  </orgName>
+                  <org type="Stadtviertel" xml:id="org__wien-stubarum_vor_stubentor">
+                     <orgName>
+                        <reg>Vor Stubentor (Stubarum - Stubenviertel)</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="Stadtviertel" xml:id="org__wien-lignorum">
+                  <orgName>
+                     <reg xml:lang="LAT">Lignorum</reg>
+                     <reg xml:lang="GER">Widmerviertel</reg>
+                  </orgName>
+                  <org type="Stadtviertel" xml:id="org__wien-lignorum_vor_widmertor">
+                     <orgName>
+                        <reg>Vor Widmertor (Lignorum - Widmerviertel)</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="Stadtviertel" xml:id="org__wien-scotorum">
+                  <orgName>
+                     <reg xml:lang="LAT">Scotorum</reg>
+                     <reg xml:lang="GER">Schottenviertel</reg>
+                  </orgName>
+                  <org type="Stadtviertel" xml:id="org__wien-scotorum_vor_schottentor">
+                     <orgName>
+                        <reg>Vor Schottentor (Scotorum - Schottenviertel)</reg>
+                     </orgName>
+                  </org>
+                  <org type="Stadtviertel" xml:id="org__wien-scotorum_vor_werdertor">
+                     <orgName>
+                        <reg>Vor Werdertor (Scotorum - Schottenviertel)</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="Stadtviertel" xml:id="org__wien-karinthianorum">
+                  <orgName>
+                     <reg xml:lang="LAT">Karinthianorum</reg>
+                     <reg xml:lang="GER">Kärntnerviertel</reg>
+                  </orgName>
+                  <org type="Stadtviertel" xml:id="org__wien-karinthianorum_vor_kaerntnertor">
+                     <orgName>
+                        <reg>Vor Kärntnertor (Karinthianorum - Kärntnerviertel)</reg>
+                     </orgName>
+                  </org>
+               </org>
+               <org type="OTHER" xml:id="org__wien-stubenbruecke" resp="rs">
+                  <orgName>
+                     <reg>Stuben(tor)brücke</reg>
+                  </orgName>
+                  <location>
+                     <address>
+                        <addrLine corresp="#pl__wien"/>
+                     </address>
+                  </location>
+                  <idno type="URI">https://www.geschichtewiki.wien.gv.at/Stubenbrücke</idno>
+               </org>
+            </org>
+            </listOrg>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Register subset for workshop (extracted from placeList.xml)</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Workshop subset</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Derived from full register</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <listPlace/>
+    </body>
+  </text>
+</TEI>

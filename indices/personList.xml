@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Register subset for workshop (extracted from personList.xml)</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Workshop subset</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Derived from full register</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <listPerson><person sex="m" source="QGW_II_I_register_pg_519" xml:id="pe__greiffe_QGW_II_I_75" resp="lp">
+                    <persName>
+                        <forename>
+                            <reg>Greiffe</reg>
+                        </forename>
+                        <addName>
+                            <reg>bei unser Frauen auf der Stetten</reg>
+                        </addName>
+                    </persName>
+                    <note>Ritter, So. v. Otto v. Hohenmarkt, Gem. Offemei Tochter von Gozzo von
+                        Krems</note>
+                </person>
+                <person sex="f" source="QGW_II_I_register_pg_519" xml:id="pe__offemei_QGW_II_I_82" resp="ks">
+                    <persName>
+                        <forename>
+                            <reg>Offemei</reg>
+                        </forename>
+                    </persName>
+                    <note>Gem. v. Greiffe bei unser Frauen auf der Stetten</note>
+                </person>
+                <person resp="lp" sex="f" source="QGW_II_I_register_pg_570" xml:id="pe__jutta_QGW_II_I_1">
+                    <persName>
+                        <forename>
+                            <reg>Jutta</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>von Schönberg</reg>
+                            </add>
+                        </surname>
+                    </persName>
+                    <note>Mutter von Hadmar und Rapoto von Schönberg</note>
+                </person>
+                <person resp="ks-cs" sex="f" source="QGW_II_I_register_pg_592" xml:id="pe__margarethe_QGW_II_I_2">
+                    <persName>
+                        <forename>
+                            <reg>Margarethe</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>Gutratin</reg>
+                            </add>
+                        </surname>
+                        <addName>
+                            <reg>von Zöbing</reg>
+                        </addName>
+                    </persName>
+                    <note>Nepos von Tuta von Zöbing, Gem. v. Karl von Gutrat</note>
+                </person>
+                <person resp="df-hk-kg" sex="f" source="QGW_II_I_register_pg_493" xml:id="pe__diemut_QGW_II_I_10">
+                    <persName>
+                        <forename>
+                            <reg>Diemut</reg>
+                        </forename>
+                    </persName>
+                    <note>Gem. von Berthold_10</note>
+                </person>
+                <person resp="ks" sex="f" source="QGW_II_I_register_pg_540" xml:id="pe__gisela_QGW_II_I_17">
+                    <persName>
+                        <forename>
+                            <reg>Gisela</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>Hubmeisterin</reg>
+                            </add>
+                        </surname>
+                    </persName>
+                    <note>Gem. von Konrad Hubmeister (I.)</note>
+                    <death notAfter="1331-11-14">1331-11-14</death>
+                </person>
+                <person resp="df-hk-kg" sex="f" source="QGW_II_I_register_pg_558" xml:id="pe__christine_QGW_II_I_59">
+                    <persName>
+                        <forename>
+                            <reg>Christine</reg>
+                        </forename>
+                    </persName>
+                    <note>Äbtissin von St. Niklas</note>
+                </person>
+                <person resp="lp" sex="m" source="QGW_II_I_register_pg_570" xml:id="pe__hadmar_von_schoenberg_QGW_II_I_1">
+                    <persName>
+                        <forename>
+                            <reg>Hadmar</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Schönberg</reg>
+                        </surname>
+                        <addName>
+                            <reg>von Schönberg</reg>
+                        </addName>
+                    </persName>
+                </person>
+                <person resp="lp" sex="m" source="QGW_II_I_register_pg_570" xml:id="pe__rapoto_von_schoenberg_QGW_II_I_1">
+                    <persName>
+                        <forename>
+                            <reg>Rapoto</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Schönberg</reg>
+                        </surname>
+                        <addName>
+                            <reg>von Schönberg</reg>
+                        </addName>
+                    </persName>
+                </person>
+                <person resp="ks" sex="m" source="QGW_II_I_register_pg_522" xml:id="pe__karl_von_gutrat_QGW_II_I_2">
+                    <persName>
+                        <forename>
+                            <reg>Karl</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Gutrat</reg>
+                        </surname>
+                    </persName>
+                    <note>Gem. Margarethe</note>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_541" xml:id="pe__konrad_QGW_II_I_3">
+                    <persName>
+                        <forename>
+                            <reg>Konrad</reg>
+                        </forename>
+                    </persName>
+                    <note>incisor</note>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_493" xml:id="pe__berthold_QGW_II_I_10">
+                    <persName>
+                        <forename>
+                            <reg>Berthold</reg>
+                        </forename>
+                    </persName>
+                    <note>camerarius</note>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_570" xml:id="pe__wilhelm_QGW_II_I_20">
+                    <persName>
+                        <forename>
+                            <reg>Wilhelm</reg>
+                        </forename>
+                    </persName>
+                    <note>Abt der Schotten</note>
+                </person>
+                <person resp="ks" sex="m" source="QGW_II_I_register_pg_538" xml:id="pe__rudolf_chitzel_QGW_II_I_20">
+                    <persName>
+                        <forename>
+                            <reg>Rudolf</reg>
+                        </forename>
+                        <surname>
+                            <reg>Chitzel</reg>
+                        </surname>
+                    </persName>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_570" xml:id="pe__johann_QGW_II_I_80">
+                    <persName>
+                        <forename>
+                            <reg>Johann</reg>
+                        </forename>
+                    </persName>
+                    <note>Abt der Schotten</note>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_494" xml:id="pe__heinrich_von_pfannberg_QGW_II_I_80">
+                    <persName>
+                        <forename>
+                            <reg>Heinrich</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Pfannberg</reg>
+                        </surname>
+                        <addName>
+                            <reg>von Pfannberg</reg>
+                        </addName>
+                    </persName>
+                </person>
+                <person resp="lp" sex="m" source="QGW_II_I_register_pg_542" xml:id="pe__konrad_chrannest_QGW_II_I_99">
+                    <persName>
+                        <forename>
+                            <reg>Konrad</reg>
+                        </forename>
+                        <surname>
+                            <reg>Chrannest</reg>
+                        </surname>
+                        <addName>
+                            <reg>Chrannest</reg>
+                        </addName>
+                    </persName>
+                </person>
+                <person sex="f" source="QGW_II_I_register_pg_541" xml:id="pe__elisabeth_QGW_II_I_100" resp="ks">
+                    <persName>
+                        <forename>
+                            <reg>Elisabeth</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>Chrannestin</reg>
+                            </add>
+                        </surname>
+                    </persName>
+                    <note>Gem. v. Konrad Chrannest</note>
+                </person>
+                <person resp="ks" sex="m" source="QGW_II_I_register_pg_580" xml:id="pe__wilhelm_in_dem_strohof_QGW_II_I_180">
+                    <persName>
+                        <forename>
+                            <reg>Wilhelm</reg>
+                        </forename>
+                        <surname>
+                            <reg>in dem Strohof</reg>
+                        </surname>
+                        <genName>
+                            <reg>I</reg>
+                        </genName>
+                    </persName>
+                    <note>Vater von Wilhelm in dem Strohof II</note>
+                    <death notAfter="1338-06-15">1338-06-15</death>
+                </person>
+                <person resp="df-hk-kg" sex="m" source="QGW_II_I_register_pg_587" xml:id="pe__otto_wilfleinsdorfer_FRA_II_1319_VI_24">
+                    <persName type="wienwiki">Ott Wülfleinsdorfer</persName>
+                    <persName>
+                        <forename>
+                            <reg>Otto</reg>
+                        </forename>
+                        <surname>
+                            <reg>Wilfleinsdorfer</reg>
+                        </surname>
+                    </persName>
+                    <idno type="URI">https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=10968</idno>
+                    <idno type="PAGEID_WienWiki">10968</idno>
+                </person>
+                <person resp="lp" sex="m" source="QGW_II_I_register_pg_560" xml:id="pe__konrad_nussdorf_QGW_II_I_110">
+                    <persName>
+                        <forename>
+                            <reg>Konrad</reg>
+                        </forename>
+                        <surname>
+                            <reg>Nussdorf</reg>
+                        </surname>
+                        <addName>
+                            <reg>Nussdorf</reg>
+                        </addName>
+                    </persName>
+                    <note>Pfleger Kl. Neuburg und Burggraf auf dem Chalnperge</note>
+                </person>
+                <person resp="ks" sex="f" source="QGW_II_I_register_pg_592" xml:id="pe__tuta_von_zoebing_QGW_II_I_2">
+                    <persName>
+                        <forename>
+                            <reg>Tuta</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>von Zöbing</reg>
+                            </add>
+                        </surname>
+                    </persName>
+                </person>
+                <person sex="m" xml:id="pe__heinrich_von_helfenberg_QGW_II_I_30" resp="hk">
+                    <persName>
+                        <forename>
+                            <reg>Heinrich</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Helfenberg</reg>
+                        </surname>
+                    </persName>
+                    <note>Bischof von Gurk (1298–1326)</note>
+                </person>
+                <person sex="m" source="QGW_II_I_register_pg_560" xml:id="pe__boslab_von_nussdorf_QGW_II_I_85" resp="lp-ks">
+                    <persName>
+                        <forename>
+                            <reg>Boslab</reg>
+                        </forename>
+                        <surname>
+                            <reg>von Nussdorf</reg>
+                        </surname>
+                    </persName>
+                    <note>Gem. Mathilde</note>
+                </person>
+                <person sex="f" source="QGW_II_I_register_pg_560" xml:id="pe__mathilde_QGW_II_I_85" resp="lp-ks">
+                    <persName>
+                        <forename>
+                            <reg>Mathilde</reg>
+                        </forename>
+                        <surname>
+                            <add>
+                                <reg>von Nussdorf</reg>
+                            </add>
+                        </surname>
+                    </persName>
+                    <note>Gem. Boslab von Nussdorf</note>
+                </person>
+                <person sex="f" source="QGW_II_I_register_pg_495" xml:id="pe__plum_QGW_II_I_85" resp="ks">
+                    <persName>
+                        <forename>
+                            <reg>Plum</reg>
+                        </forename>
+                        <surname>
+                            <reg>die Jüdin</reg>
+                        </surname>
+                        <addName>
+                            <reg>von Neuenburch</reg>
+                        </addName>
+                    </persName>
+                    <note>aidem: Zadel der Jude</note>
+                </person>
+                <person sex="m" source="QGW_II_I_register_pg_567" xml:id="pe__herbert_auf_der_saeule_QGW_II_I_184" resp="kg">
+                    <persName>
+                        <forename>
+                            <reg>Herbert</reg>
+                        </forename>
+                        <surname>
+                            <reg>auf der Säule</reg>
+                        </surname>
+                        <addName>
+                            <reg>auf der Säule</reg>
+                        </addName>
+                        <genName>I</genName>
+                    </persName>
+                    <note>Br. Heinrich, Gem. Kunigunde, Sö. Herbert und Volchmar</note>
+                    <death notAfter="1354-08-02">1354-08-02</death>
+                </person>
+                <person sex="f" source="QGW_II_I_register_pg_522" xml:id="pe__hailmannin_QGW_II_I_110" resp="lp-ks">
+                    <persName>
+                        <surname>
+                            <reg>Hailmannin</reg>
+                        </surname>
+                        <addName/>
+                    </persName>
+                </person>
+                <person resp="ks" sex="m" source="QGW_II_I_register_pg_540" xml:id="pe__konrad_hubmeister_QGW_II_I_146">
+                    <persName>
+                        <forename>
+                            <reg>Konrad</reg>
+                        </forename>
+                        <surname>
+                            <reg>Hubmeister</reg>
+                        </surname>
+                        <genName>I</genName>
+                    </persName>
+                    <note>Gem. Gisela/Geisel</note>
+                    <death notAfter="1331-11-14">1331-11-14</death>
+                </person>
+                <person sex="m" source="QGW_II_I_register_pg_17" xml:id="pe__gerhard_bruenner_QGW_II_I_133" resp="lp">
+                    <persName>
+                        <forename>
+                            <reg>Gerhard</reg>
+                        </forename>
+                        <surname>
+                            <reg>der Brünner</reg>
+                        </surname>
+                        <addName>
+                            <reg>Meister</reg>
+                        </addName>
+                    </persName>
+                    <note>Ve. Dietrich an dem Steg, Neffe Seifrid der Brunner</note>
+                </person>
+                </listPerson>
+    </body>
+  </text>
+</TEI>

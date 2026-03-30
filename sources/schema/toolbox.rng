@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:tei="http://www.tei-c.org/ns/1.0"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         ns="http://www.tei-c.org/ns/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <a:documentation>
+    RelaxNG schema for the prosopographic database of medieval Viennese
+    legal transactions (ca. 1177–1524). Derived from toolbox_full.dtd
+    (TEI 4.0.0, ODD-generated 2020-08-06) by empirical analysis of all
+    6,452 XML source files in the corpus.
+
+    Covers 70+ elements actually used plus xi:include. Expanded from
+    the original 48-element schema to accommodate new collections
+    (Gewerbuch D, Satzbuch CD, QGW 1448-57).
+
+    ODD-vs-RelaxNG decision (Gutachten requirement #2): The original ODD
+    source is lost (only the generated DTD survives). RelaxNG was chosen
+    because it integrates directly with the lxml/Python pipeline and
+    supports namespace-aware validation with xsd:pattern constraints,
+    without requiring the TEI/XSLT/ODD toolchain.
+
+    Project: "Im Netz der Stadt" (Gruenwald) / "Stadt und Gemeinschaft"
+    (Lutter, University of Vienna). Modernisation: Digital Humanities Craft OG.
+  </a:documentation>
+
+  <start>
+    <ref name="TEI"/>
+  </start>
+
+  <!-- ================================================================== -->
+  <!-- Section 1: Attribute Groups                                        -->
+  <!-- ================================================================== -->
+
+  <a:documentation>
+    Six named attribute groups. att.global is applied to most elements but
+    NOT to rs, roleName, or triggerstring (conflict avoidance:
+    cert/n/source/resp have element-specific semantics on those elements).
+  </a:documentation>
+
+  <define name="att.global">
+    <a:documentation>
+      Global attributes shared by most TEI elements. Excludes cert, source,
+      and resp (moved to per-element definitions to avoid RelaxNG conflicts).
+    </a:documentation>
+    <optional><attribute name="xml:id"><text/></attribute></optional>
+    <optional><attribute name="n"><text/></attribute></optional>
+    <optional><attribute name="xml:lang"><text/></attribute></optional>
+    <optional><attribute name="xml:base"><text/></attribute></optional>
+    <optional><attribute name="xml:space">
+      <choice><value>default</value><value>preserve</value></choice>
+    </attribute></optional>
+    <optional><attribute name="rend"><text/></attribute></optional>
+    <optional><attribute name="style"><text/></attribute></optional>
+    <optional><attribute name="rendition"><text/></attribute></optional>
+    <optional><attribute name="facs"><text/></attribute></optional>
+    <optional><attribute name="change"><text/></attribute></optional>
+  </define>
+
+  <define name="att.typed">
+    <a:documentation>type and optional subtype, for bibl, altIdentifier, idno, listBibl.</a:documentation>
+    <optional><attribute name="type"><text/></attribute></optional>
+    <optional><attribute name="subtype"><text/></attribute></optional>
+  </define>
+
+  <define name="att.datable.w3c">
+    <a:documentation>W3C date attributes for date and origDate.</a:documentation>
+    <optional><attribute name="when"><text/></attribute></optional>
+    <optional><attribute name="from"><text/></attribute></optional>
+    <optional><attribute name="to"><text/></attribute></optional>
+    <optional><attribute name="notBefore"><text/></attribute></optional>
+    <optional><attribute name="notAfter"><text/></attribute></optional>
+  </define>
+
+  <define name="att.declarable">
+    <a:documentation>default attribute for declarable elements.</a:documentation>
+    <optional><attribute name="default">
+      <choice><value>true</value><value>false</value></choice>
+    </attribute></optional>
+  </define>
+
+  <define name="att.docStatus">
+    <a:documentation>status attribute for bibl, msDesc.</a:documentation>
+    <optional><attribute name="status"><text/></attribute></optional>
+  </define>
+
+  <define name="att.sortable">
+    <a:documentation>sortKey attribute for bibl, idno, listBibl.</a:documentation>
+    <optional><attribute name="sortKey"><text/></attribute></optional>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 2: Content Macros                                          -->
+  <!-- ================================================================== -->
+
+  <define name="macro.paraContent">
+    <a:documentation>
+      Paragraph-level mixed content. Extended for new collections to include
+      hi, lb, pb, note, table, and p (nested p in Satzbuch/Gewerbuch).
+    </a:documentation>
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="rs"/>
+        <ref name="roleName"/>
+        <ref name="triggerstring"/>
+        <ref name="add"/>
+        <ref name="reg"/>
+        <ref name="unclear"/>
+        <ref name="quote"/>
+        <ref name="label"/>
+        <ref name="date"/>
+        <ref name="origDate"/>
+        <ref name="placeName"/>
+        <ref name="measure"/>
+        <ref name="idno"/>
+        <ref name="bibl"/>
+        <ref name="title"/>
+        <ref name="listBibl"/>
+        <!-- New collections (Gewerbuch D, Satzbuch CD, QGW 1448-57) -->
+        <ref name="hi"/>
+        <ref name="lb"/>
+        <ref name="pb"/>
+        <ref name="note"/>
+        <ref name="table"/>
+        <ref name="p"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+
+  <define name="macro.phraseSeq">
+    <a:documentation>
+      Phrase-level mixed content. Used inside inline elements that can
+      contain other inline elements (rs, roleName, quote, etc.).
+      Extended for new collections to include hi, lb, pb, note, orgName.
+    </a:documentation>
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="rs"/>
+        <ref name="roleName"/>
+        <ref name="triggerstring"/>
+        <ref name="add"/>
+        <ref name="reg"/>
+        <ref name="unclear"/>
+        <ref name="quote"/>
+        <ref name="label"/>
+        <ref name="date"/>
+        <ref name="origDate"/>
+        <ref name="placeName"/>
+        <ref name="measure"/>
+        <ref name="idno"/>
+        <ref name="title"/>
+        <!-- New collections -->
+        <ref name="hi"/>
+        <ref name="lb"/>
+        <ref name="pb"/>
+        <ref name="note"/>
+        <ref name="orgName"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 3: Root Element (TEI)                                      -->
+  <!-- ================================================================== -->
+
+  <define name="TEI">
+    <element name="TEI">
+      <ref name="att.global"/>
+      <!-- Namespace declarations appear as attributes in some files but
+           RelaxNG treats xmlns:* as namespace declarations, not attributes.
+           However, xsi:schemaLocation may appear and must be allowed. -->
+      <optional>
+        <attribute name="xsi:schemaLocation"
+                   ns="http://www.w3.org/2001/XMLSchema-instance">
+          <text/>
+        </attribute>
+      </optional>
+      <!-- 1 file (2018.xml) has resp on TEI root -->
+      <optional><attribute name="resp"><text/></attribute></optional>
+      <!-- New collections: @prev and @next for document chaining -->
+      <optional><attribute name="prev"><text/></attribute></optional>
+      <optional><attribute name="next"><text/></attribute></optional>
+      <ref name="teiHeader"/>
+      <optional><ref name="facsimile"/></optional>
+      <ref name="text"/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 4: Header Elements                                         -->
+  <!-- ================================================================== -->
+
+  <define name="teiHeader">
+    <element name="teiHeader">
+      <ref name="att.global"/>
+      <ref name="fileDesc"/>
+      <optional><ref name="encodingDesc"/></optional>
+      <optional><ref name="profileDesc"/></optional>
+      <!-- Gewerbuch D: facsimile inside teiHeader (non-standard but present) -->
+      <optional><ref name="facsimile"/></optional>
+      <!-- Gewerbuch D: sourceDesc directly in teiHeader (alongside fileDesc) -->
+      <optional><ref name="sourceDesc"/></optional>
+    </element>
+  </define>
+
+  <define name="fileDesc">
+    <element name="fileDesc">
+      <ref name="att.global"/>
+      <ref name="titleStmt"/>
+      <optional><ref name="publicationStmt"/></optional>
+      <!-- New: seriesStmt in Gewerbuch D and Satzbuch CD -->
+      <optional><ref name="seriesStmt"/></optional>
+      <optional><ref name="sourceDesc"/></optional>
+    </element>
+  </define>
+
+  <define name="titleStmt">
+    <element name="titleStmt">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="title"/>
+          <!-- New: principal, editor, respStmt in Gewerbuch D -->
+          <ref name="principal"/>
+          <ref name="editor"/>
+          <ref name="respStmt"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="principal">
+    <a:documentation>
+      Gewerbuch D: identifies the responsible researcher.
+    </a:documentation>
+    <element name="principal">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="editor">
+    <a:documentation>
+      Gewerbuch D: editor names, may contain persName elements.
+    </a:documentation>
+    <element name="editor">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="persName"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="respStmt">
+    <a:documentation>
+      Responsibility statement. Used in Satzbuch CD and Gewerbuch D.
+    </a:documentation>
+    <element name="respStmt">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="resp"/>
+          <ref name="name"/>
+          <ref name="persName"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="resp">
+    <element name="resp">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="name">
+    <element name="name">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="rs"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="persName">
+    <element name="persName">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="seriesStmt">
+    <a:documentation>
+      Series statement. Gewerbuch D and Satzbuch CD.
+    </a:documentation>
+    <element name="seriesStmt">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <ref name="title"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="publicationStmt">
+    <element name="publicationStmt">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="p"/>
+          <!-- New: publisher, idno, availability in Satzbuch CD -->
+          <ref name="publisher"/>
+          <ref name="idno"/>
+          <ref name="availability"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="availability">
+    <element name="availability">
+      <ref name="att.global"/>
+      <ref name="att.declarable"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="licence"/>
+          <ref name="p"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="licence">
+    <element name="licence">
+      <ref name="att.global"/>
+      <optional><attribute name="target"><text/></attribute></optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="p"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="sourceDesc">
+    <element name="sourceDesc">
+      <ref name="att.global"/>
+      <ref name="att.declarable"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="bibl"/>
+          <ref name="msDesc"/>
+          <ref name="listBibl"/>
+          <ref name="p"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="encodingDesc">
+    <element name="encodingDesc">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="projectDesc"/>
+          <ref name="p"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="projectDesc">
+    <element name="projectDesc">
+      <ref name="att.global"/>
+      <ref name="att.declarable"/>
+      <zeroOrMore>
+        <ref name="p"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="profileDesc">
+    <element name="profileDesc">
+      <ref name="att.global"/>
+      <optional><ref name="creation"/></optional>
+    </element>
+  </define>
+
+  <define name="creation">
+    <element name="creation">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="date"/>
+          <ref name="placeName"/>
+          <ref name="origDate"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 5: Manuscript Description                                  -->
+  <!-- ================================================================== -->
+
+  <define name="msDesc">
+    <element name="msDesc">
+      <ref name="att.global"/>
+      <ref name="att.typed"/>
+      <ref name="att.docStatus"/>
+      <optional><ref name="msIdentifier"/></optional>
+      <optional><ref name="msContents"/></optional>
+      <optional><ref name="physDesc"/></optional>
+      <!-- New: history in Satzbuch CD and Gewerbuch D -->
+      <optional><ref name="history"/></optional>
+    </element>
+  </define>
+
+  <define name="msIdentifier">
+    <element name="msIdentifier">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="repository"/>
+          <ref name="idno"/>
+          <ref name="altIdentifier"/>
+          <!-- New: institution in Satzbuch CD -->
+          <ref name="institution"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="institution">
+    <element name="institution">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="msContents">
+    <element name="msContents">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <ref name="msItem"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="msItem">
+    <element name="msItem">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="bibl"/>
+          <ref name="listBibl"/>
+          <ref name="p"/>
+          <!-- New: locus in Satzbuch CD -->
+          <ref name="locus"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="locus">
+    <element name="locus">
+      <ref name="att.global"/>
+      <optional><attribute name="from"><text/></attribute></optional>
+      <optional><attribute name="to"><text/></attribute></optional>
+      <text/>
+    </element>
+  </define>
+
+  <define name="history">
+    <a:documentation>
+      Manuscript history. Satzbuch CD and Gewerbuch D.
+    </a:documentation>
+    <element name="history">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="origin"/>
+          <ref name="p"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="origin">
+    <element name="origin">
+      <ref name="att.global"/>
+      <ref name="att.datable.w3c"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="date"/>
+          <ref name="origDate"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="physDesc">
+    <element name="physDesc">
+      <ref name="att.global"/>
+      <!-- Can be empty: <physDesc/> in many Stadtbücher files -->
+      <zeroOrMore>
+        <choice>
+          <ref name="p"/>
+          <ref name="sealDesc"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="sealDesc">
+    <element name="sealDesc">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <ref name="seal"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="seal">
+    <element name="seal">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="p"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="altIdentifier">
+    <element name="altIdentifier">
+      <ref name="att.global"/>
+      <ref name="att.typed"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="idno"/>
+          <ref name="repository"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="repository">
+    <element name="repository">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 6: Facsimile                                               -->
+  <!-- ================================================================== -->
+
+  <define name="facsimile">
+    <element name="facsimile">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="surface"/>
+          <!-- Gewerbuch D: graphic directly in facsimile (without surface) -->
+          <ref name="graphic"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="surface">
+    <element name="surface">
+      <ref name="att.global"/>
+      <!-- New: coordinate attributes in Gewerbuch D -->
+      <optional><attribute name="ulx"><text/></attribute></optional>
+      <optional><attribute name="uly"><text/></attribute></optional>
+      <optional><attribute name="lrx"><text/></attribute></optional>
+      <optional><attribute name="lry"><text/></attribute></optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="graphic"/>
+          <!-- New: zone in Gewerbuch D -->
+          <ref name="zone"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="zone">
+    <a:documentation>
+      Facsimile zone. Gewerbuch D uses zones with @points for regions.
+    </a:documentation>
+    <element name="zone">
+      <ref name="att.global"/>
+      <optional><attribute name="points"><text/></attribute></optional>
+      <!-- rendition already in att.global -->
+      <zeroOrMore>
+        <ref name="zone"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="graphic">
+    <element name="graphic">
+      <ref name="att.global"/>
+      <optional><attribute name="url"><text/></attribute></optional>
+      <optional><attribute name="width"><text/></attribute></optional>
+      <optional><attribute name="height"><text/></attribute></optional>
+      <empty/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 7: Body/Text Structure                                     -->
+  <!-- ================================================================== -->
+
+  <define name="text">
+    <element name="text">
+      <ref name="att.global"/>
+      <!-- 1 file (176.xml) has bare text before body -->
+      <optional><ref name="front"/></optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="body"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="front">
+    <a:documentation>
+      Not defined in toolbox_full.dtd but appears in 1 file
+      (Stadtbuecher/143.xml). Included for corpus completeness.
+    </a:documentation>
+    <element name="front">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="docTitle"/>
+          <ref name="div"/>
+          <ref name="p"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="docTitle">
+    <element name="docTitle">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="body">
+    <element name="body">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="div"/>
+          <ref name="p"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="div">
+    <element name="div">
+      <ref name="att.global"/>
+      <!-- div-specific attributes (not from att.global to avoid resp conflict) -->
+      <optional><attribute name="type">
+        <choice>
+          <value>lists</value>
+          <value>abstract</value>
+          <value>entry</value>
+          <value>seal</value>
+          <value>nota</value>
+          <value>header</value>
+          <value>table</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="subtype"><text/></attribute></optional>
+      <optional><attribute name="resp">
+        <a:documentation>
+          Editor ID. Fixed list of permitted editor initials.
+          See edition guidelines Section 7 (Editor-Liste) and Section 6.6.
+        </a:documentation>
+        <choice>
+          <value>kg</value>
+          <value>cs</value>
+          <value>rs</value>
+          <value>lp</value>
+          <value>ks</value>
+          <value>vh</value>
+          <value>ms</value>
+          <value>dg</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="cert">
+        <choice>
+          <value>high</value><value>medium</value><value>low</value><value>unknown</value>
+        </choice>
+      </attribute></optional>
+      <!-- Can be empty: <div type="lists"/> in files without xi:include -->
+      <zeroOrMore>
+        <choice>
+          <ref name="p"/>
+          <ref name="div"/>
+          <ref name="xi.include"/>
+          <!-- New: pb in Satzbuch CD -->
+          <ref name="pb"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 8: Annotation Model                                        -->
+  <!-- ================================================================== -->
+
+  <a:documentation>
+    The 4-level annotation model:
+      Level 1: Events    — rs[@type='event']
+      Level 2: Functions — rs[@type='fn' @role]
+      Level 3: Entities  — rs[@type='person|org|place']
+      Level 4: Attributes — roleName[@type]
+    Plus triggerstring for annotation reasoning.
+  </a:documentation>
+
+  <define name="rs">
+    <element name="rs">
+      <!-- rs has its own attribute set (no att.global — cert conflict) -->
+      <optional><attribute name="type">
+        <a:documentation>
+          Canonical values for the 4-level annotation model.
+          See edition guidelines Section 6.1.
+        </a:documentation>
+        <choice>
+          <value>person</value>
+          <value>org</value>
+          <value>place</value>
+          <value>event</value>
+          <value>fn</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="subtype"><text/></attribute></optional>
+      <optional><attribute name="role">
+        <a:documentation>
+          Function roles in legal transactions.
+          See edition guidelines Section 6.2.
+        </a:documentation>
+        <choice>
+          <value>issuer</value>
+          <value>recipient</value>
+          <value>witness</value>
+          <value>other</value>
+          <value>transactiongood_I</value>
+          <value>transactiongood_II</value>
+          <value>transactiongood_III</value>
+        </choice>
+      </attribute></optional>
+      <!-- @ref relaxed to text (290+ files use ref="NULL" for unresolved refs) -->
+      <optional><attribute name="ref"><text/></attribute></optional>
+      <optional><attribute name="corresp"><text/></attribute></optional>
+      <optional><attribute name="select"><text/></attribute></optional>
+      <optional><attribute name="cert">
+        <choice>
+          <value>high</value><value>medium</value><value>low</value><value>unknown</value>
+        </choice>
+      </attribute></optional>
+      <!-- 1 file (2.xml) has rs/@measure -->
+      <optional><attribute name="measure"><text/></attribute></optional>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="roleName">
+    <element name="roleName">
+      <!-- roleName has its own attribute set (no att.global — cert conflict) -->
+      <optional><attribute name="type">
+        <a:documentation>
+          Attribute and relation types.
+          See edition guidelines Section 6.3.
+        </a:documentation>
+        <choice>
+          <value>occ</value>
+          <value>kin</value>
+          <value>title</value>
+          <value>prof</value>
+          <value>dead</value>
+          <value>rep</value>
+          <value>friend</value>
+          <value>topo</value>
+          <value>owner</value>
+          <value>title_ref</value>
+          <value>tenant</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="cert">
+        <choice>
+          <value>high</value><value>medium</value><value>low</value><value>unknown</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="corresp"><text/></attribute></optional>
+      <optional><attribute name="select"><text/></attribute></optional>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="triggerstring">
+    <a:documentation>
+      Project-specific element for annotation reasoning. DTD declares
+      #PCDATA but corpus contains many inline elements inside triggerstring.
+      Content model expanded to match actual usage across all collections.
+    </a:documentation>
+    <element name="triggerstring">
+      <!-- Own attribute set: only @n enum. No att.global (n conflict). -->
+      <optional><attribute name="n">
+        <choice>
+          <value>disp</value>
+          <value>fn</value>
+          <value>reason</value>
+          <value>impl_rules</value>
+        </choice>
+      </attribute></optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="add"/>
+          <ref name="rs"/>
+          <ref name="roleName"/>
+          <!-- New collections: hi, unclear, note, lb, pb, measure, triggerstring -->
+          <ref name="hi"/>
+          <ref name="unclear"/>
+          <ref name="note"/>
+          <ref name="lb"/>
+          <ref name="pb"/>
+          <ref name="measure"/>
+          <ref name="triggerstring"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <!-- catchwords element removed: unified to triggerstring (2026-03-20) -->
+
+  <!-- ================================================================== -->
+  <!-- Section 9: Inline Elements                                         -->
+  <!-- ================================================================== -->
+
+  <define name="p">
+    <element name="p">
+      <ref name="att.global"/>
+      <!-- p can be empty: <p/> in publicationStmt -->
+      <ref name="macro.paraContent"/>
+    </element>
+  </define>
+
+  <define name="hi">
+    <a:documentation>
+      Highlighting. Common in Gewerbuch D and Satzbuch CD for
+      superscript ordinals (rend="super") and other formatting.
+    </a:documentation>
+    <element name="hi">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="hi"/>
+          <ref name="add"/>
+          <ref name="unclear"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="lb">
+    <a:documentation>
+      Line break. Used in Satzbuch CD and Gewerbuch D.
+    </a:documentation>
+    <element name="lb">
+      <ref name="att.global"/>
+      <empty/>
+    </element>
+  </define>
+
+  <define name="pb">
+    <a:documentation>
+      Page break. Used in Satzbuch CD and some QGW files.
+    </a:documentation>
+    <element name="pb">
+      <ref name="att.global"/>
+      <empty/>
+    </element>
+  </define>
+
+  <define name="note">
+    <a:documentation>
+      Annotation notes. Used in Satzbuch CD, Gewerbuch D.
+      Can contain paragraphs.
+    </a:documentation>
+    <element name="note">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="p"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="orgName">
+    <a:documentation>
+      Organisation name. Rare: 1 occurrence in corpus.
+    </a:documentation>
+    <element name="orgName">
+      <ref name="att.global"/>
+      <optional><attribute name="type"><text/></attribute></optional>
+      <text/>
+    </element>
+  </define>
+
+  <define name="table">
+    <a:documentation>
+      Table structure. Used in Satzbuch CD for tabular data.
+    </a:documentation>
+    <element name="table">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <ref name="row"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="row">
+    <element name="row">
+      <ref name="att.global"/>
+      <zeroOrMore>
+        <ref name="cell"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="cell">
+    <element name="cell">
+      <ref name="att.global"/>
+      <ref name="macro.paraContent"/>
+    </element>
+  </define>
+
+  <define name="add">
+    <element name="add">
+      <ref name="att.global"/>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="reg">
+    <element name="reg">
+      <ref name="att.global"/>
+      <optional><attribute name="source"><text/></attribute></optional>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="unclear">
+    <element name="unclear">
+      <ref name="att.global"/>
+      <!-- ODD artifact: instant attribute in many files -->
+      <optional><attribute name="instant"><text/></attribute></optional>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="quote">
+    <a:documentation>
+      Used in ~300 files, primarily in seal descriptions.
+    </a:documentation>
+    <element name="quote">
+      <ref name="att.global"/>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="label">
+    <element name="label">
+      <ref name="att.global"/>
+      <ref name="att.typed"/>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="date">
+    <element name="date">
+      <ref name="att.global"/>
+      <ref name="att.datable.w3c"/>
+      <!-- New collections: additional date attributes -->
+      <optional><attribute name="continued"><text/></attribute></optional>
+      <optional><attribute name="month"><text/></attribute></optional>
+      <optional><attribute name="day"><text/></attribute></optional>
+      <optional><attribute name="year"><text/></attribute></optional>
+      <!-- date can contain mixed content in new collections -->
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="hi"/>
+          <ref name="add"/>
+          <ref name="unclear"/>
+          <ref name="lb"/>
+          <ref name="note"/>
+          <ref name="date"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="origDate">
+    <element name="origDate">
+      <ref name="att.global"/>
+      <ref name="att.datable.w3c"/>
+      <!-- ODD artifact: instant attribute in many files -->
+      <optional><attribute name="instant"><text/></attribute></optional>
+      <text/>
+    </element>
+  </define>
+
+  <define name="placeName">
+    <element name="placeName">
+      <ref name="att.global"/>
+      <optional><attribute name="source"><text/></attribute></optional>
+      <optional><attribute name="ref"><text/></attribute></optional>
+      <!-- 1 file (1133.xml) has certainty attribute -->
+      <optional><attribute name="certainty"><text/></attribute></optional>
+      <ref name="macro.phraseSeq"/>
+    </element>
+  </define>
+
+  <define name="measure">
+    <a:documentation>
+      Monetary values. Extended for new collections (hi, lb, measure,
+      triggerstring, unclear inside measure).
+    </a:documentation>
+    <element name="measure">
+      <ref name="att.global"/>
+      <optional><attribute name="type"><text/></attribute></optional>
+      <optional><attribute name="quantity"><text/></attribute></optional>
+      <optional><attribute name="unit"><text/></attribute></optional>
+      <optional><attribute name="commodity"><text/></attribute></optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="add"/>
+          <ref name="hi"/>
+          <ref name="lb"/>
+          <ref name="measure"/>
+          <ref name="triggerstring"/>
+          <ref name="unclear"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="idno">
+    <element name="idno">
+      <ref name="att.global"/>
+      <!-- idno has its own @type enumeration instead of att.typed -->
+      <optional><attribute name="type">
+        <choice>
+          <value>archive</value>
+          <value>handle</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="subtype"><text/></attribute></optional>
+      <ref name="att.sortable"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 10: Bibliographic Elements                                 -->
+  <!-- ================================================================== -->
+
+  <define name="bibl">
+    <element name="bibl">
+      <ref name="att.global"/>
+      <ref name="att.typed"/>
+      <ref name="att.declarable"/>
+      <ref name="att.docStatus"/>
+      <ref name="att.sortable"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="title"/>
+          <ref name="author"/>
+          <ref name="pubPlace"/>
+          <ref name="publisher"/>
+          <ref name="bibl"/>
+          <ref name="date"/>
+          <ref name="idno"/>
+          <ref name="add"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="listBibl">
+    <element name="listBibl">
+      <ref name="att.global"/>
+      <ref name="att.typed"/>
+      <ref name="att.declarable"/>
+      <ref name="att.sortable"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="bibl"/>
+          <ref name="listBibl"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="title">
+    <element name="title">
+      <ref name="att.global"/>
+      <!-- title has its own @type enumeration instead of att.typed -->
+      <optional><attribute name="type">
+        <choice>
+          <value>main</value>
+          <value>sub</value>
+          <value>rubrik</value>
+          <value>full</value>
+        </choice>
+      </attribute></optional>
+      <optional><attribute name="subtype"><text/></attribute></optional>
+      <!-- Extended for new collections: hi, unclear, note inside title -->
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="title"/>
+          <ref name="hi"/>
+          <ref name="unclear"/>
+          <ref name="note"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="author">
+    <element name="author">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="pubPlace">
+    <element name="pubPlace">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="publisher">
+    <element name="publisher">
+      <ref name="att.global"/>
+      <text/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 11: XInclude                                               -->
+  <!-- ================================================================== -->
+
+  <define name="xi.include">
+    <a:documentation>
+      Many files contain xi:include elements pointing to register files
+      in indices/. Requires its own namespace.
+    </a:documentation>
+    <element name="include" ns="http://www.w3.org/2001/XInclude">
+      <optional><attribute name="href"><text/></attribute></optional>
+      <optional><attribute name="xpointer"><text/></attribute></optional>
+      <optional><attribute name="parse"><text/></attribute></optional>
+      <empty/>
+    </element>
+  </define>
+
+  <!-- ================================================================== -->
+  <!-- Section 12: Data Quality Notes                                     -->
+  <!-- ================================================================== -->
+
+  <a:documentation>
+    Known data quality issues in the corpus (not enforced by schema):
+
+    - 5 files with non-TEI root elements (Copeybuch, Genanntenliste, Widmerliste)
+    - rs/@role typos: transactiongoood_I, transctiongood_II
+    - roleName/@type typos: ownwer, person IDs used as type
+    - Orphaned elements in a few files: blackening, addzenags, ad, da, m
+    - instant attributes reintroduced in new collections (2,997 occurrences)
+    - ref="NULL" in 290+ files (unresolved references)
+
+    These are documented in pipeline integrity checks and do not block
+    schema validation of the standard elements.
+  </a:documentation>
+
+</grammar>
